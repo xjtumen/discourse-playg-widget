@@ -1,5 +1,6 @@
 import { apiInitializer } from "discourse/lib/api";
 import User from "discourse/models/user";
+import DiscourseURL from "discourse/lib/url";
 
 export default apiInitializer("0.11.1", (api) => {
   // If login is required
@@ -49,6 +50,11 @@ export default apiInitializer("0.11.1", (api) => {
   });
 
   api.attachWidgetAction("header", "toggleplayg", function () {
-    this.state.playgChatVisible = !this.state.playgChatVisible;
+    if (this.site.mobileView) {
+      const playgURLbase = 'https://' + window.location.hostname + '/xjtumen-g/';
+      DiscourseURL.redirectAbsolute(playgURLbase);
+    } else{
+      this.state.playgChatVisible = !this.state.playgChatVisible;
+    }
   });
 });

@@ -8,11 +8,11 @@ createWidget("playg-chat-menu", {
     tagName: "div.playg-panel",
 
     html() {
-        const playgURLbase = `https://xjtu.live/xjtumen-g/`;
+        const playgURLbase = 'https://' + window.location.hostname + '/xjtumen-g/';
 
-        if (this.site.mobileView) {
-            return DiscourseURL.routeTo(playgURLbase);
-        }
+        // if (this.site.mobileView) {
+        //     return DiscourseURL.routeTo(playgURLbase);
+        // }
 
         return this.attach("menu-panel", {
             contents: () =>
